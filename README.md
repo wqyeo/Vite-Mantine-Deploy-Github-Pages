@@ -17,7 +17,7 @@ Before deploying, update the following files to match your repository configurat
 2. **`vite.config.mjs`**  
    - Set the `base` option:  
      ```javascript
-     base: "/<repository-name>/",
+     base: "/<repository-name>/"
      ```
 
 3. **`Router.tsx`**  
@@ -32,7 +32,7 @@ You will need a GitHub fine-grained personal access token for deployment:
 1. Go to **Settings > Developer Settings > Personal Access Tokens > Fine-grained Tokens > Generate New Token**.  
 2. Configure the token:  
    - **Repository access**: Grant access to the target repository.  
-   - **Permissions**: Ensure `read-write` access to **Pages**.  
+   - **Permissions**: Ensure `read-write` access to **Pages** and **Deployments**. 
 
 ### Steps  
 1. **Install dependencies**:  
