@@ -34,6 +34,8 @@ You will need a GitHub fine-grained personal access token for deployment:
    - **Repository access**: Grant access to the target repository.  
    - **Permissions**: Ensure `read-write` access to **Pages** and **Deployments**. 
 
+> Save the generated access token somewhere, you will require it whenever you deploy the website.
+
 ### Steps  
 1. **Install dependencies**:  
    ```bash
