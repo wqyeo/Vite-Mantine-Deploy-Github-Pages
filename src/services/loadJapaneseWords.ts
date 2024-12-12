@@ -16,11 +16,9 @@ export async function loadJapaneseWords(targetEntry: string) {
   console.log(`Loading Japanese Words. (${targetEntry})`);
   const targetEntryData: any[] = jsonData[targetEntry];
   const japaneseWords: JapaneseWordInformation[] = [];
-  for (const key in targetEntryData) {
-    const data = targetEntryData[key];
-
+  for (const data in targetEntryData) {
     try {
-      const currentWord = buildWordFromKeyData(data, key);
+      const currentWord = buildWordFromData(data);
       japaneseWords.push(currentWord);
     } catch (error) {
       console.error(error);
@@ -30,7 +28,7 @@ export async function loadJapaneseWords(targetEntry: string) {
   return japaneseWords;
 }
 
-function buildWordFromKeyData(key: any, data: any) {
+function buildWordFromData(data: any) {
   // If object type is dictionary (likely have traits, alternative write/reads, etc...)
   if (data !== undefined && typeof data === 'object' && data !== null) {
     const kanji: string = data['reference_writeRead']['writing'];
@@ -62,10 +60,10 @@ function buildWordFromKeyData(key: any, data: any) {
     return wordBuilder.build();
   }
   // Likely just a string
-  const extractedData = extractText(key);
+  const extractedData = extractText(data);
 
   if (extractedData == null) {
-    throw new Error(`Unexpected data format in JSON (${key}); Ignoring...`);
+    throw new Error(`Unexpected data format in JSON (${data}); Ignoring...`);
   }
 
   const { kanji, hiragana } = extractedData!;
