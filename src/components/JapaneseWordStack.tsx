@@ -36,9 +36,7 @@ export function JapaneseWordStack({
       gap="xl"
     >
       {words.map((word, index) => (
-        <Grid.Col key={index} span={6}>
-          <JapaneseWordCard word={word} displayMode={displayMode}/>
-        </Grid.Col>
+        <JapaneseWordCard key={index} word={word} displayMode={displayMode}/>
       ))}
     </Stack>
   )
