@@ -15,7 +15,8 @@ export async function loadJapaneseWords(targetEntry: string) {
   console.log(`Loading Japanese Words. (${targetEntry})`)
   const targetEntryData: any[] = jsonData[targetEntry];
   const japaneseWords: JapaneseWordInformation[] = []
-  for (const data in targetEntryData) {
+  for (const key in targetEntryData) {
+    const data = targetEntryData[key];
 
     // If object type is dictionary (likely have traits, alternative write/reads, etc...)
     if (typeof data === 'object' && data !== null) {

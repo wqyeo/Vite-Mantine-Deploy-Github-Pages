@@ -2,6 +2,8 @@
 
 This template is based on the [Vite Mantine Template](https://github.com/mantinedev/vite-template) and simplifies the process of deploying a Vite-based project to GitHub Pages.
 
+Contains some code to load Japanese Words and their information from a JSON file and displaying it in a card-grid.
+
 ---
 
 ## ⚙️ Setup  
@@ -32,7 +34,7 @@ You will need a GitHub fine-grained personal access token for deployment:
 1. Go to **Settings > Developer Settings > Personal Access Tokens > Fine-grained Tokens > Generate New Token**.  
 2. Configure the token:  
    - **Repository access**: Grant access to the target repository.  
-   - **Permissions**: Ensure `read-write` access to **Pages** and **Deployments**. 
+   - **Permissions**: Ensure `read-write` access to **Contents**, **Pages** and **Deployments**. 
 
 > Save the generated access token somewhere, you will require it whenever you deploy the website.
 

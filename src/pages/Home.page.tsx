@@ -32,7 +32,7 @@ export function HomePage() {
     }).catch(errorReason =>
       console.error(`Failed to load JSON file: ${errorReason}`)
     );
-  })
+  }, [])
 
   const onEntryChange = async (entry: string) => {
     console.log(`Triggered loading ${entry}.`)
