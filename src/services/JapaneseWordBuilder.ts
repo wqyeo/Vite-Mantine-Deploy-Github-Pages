@@ -60,6 +60,13 @@ export class JapaneseWordBuilder {
       const exampleLink = exampleData["link"];
 
       const exampleWord = new JapaneseWordExample(exampleSource, exampleLink);
+
+      const exampleSentence = exampleData["sentence"];
+      if (!isIterable(exampleSentence)) {
+        // No example sentence...
+        continue;
+      }
+
       for (const sentence of exampleData["sentence_examples"]) {
         exampleWord.addExample(sentence);
       }
