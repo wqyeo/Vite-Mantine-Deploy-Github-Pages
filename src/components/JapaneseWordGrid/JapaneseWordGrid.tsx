@@ -18,7 +18,7 @@ export function JapaneseWordGrid({
         {Array(6)
           .fill(0)
           .map((_, index) => (
-            <Grid.Col key={index} span={4}>
+            <Grid.Col key={index} span={6}>
               <Skeleton/>
             </Grid.Col>
         ))}
@@ -30,7 +30,7 @@ export function JapaneseWordGrid({
   return (
     <Grid>
       {words.map((word, index) => (
-        <Grid.Col key={index} span={4}>
+        <Grid.Col key={index} span={6}>
           <JapaneseWordCard word={word} displayMode={displayMode}/>
         </Grid.Col>
       ))}

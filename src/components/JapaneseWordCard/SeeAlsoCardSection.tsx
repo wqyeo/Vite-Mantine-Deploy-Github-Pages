@@ -20,8 +20,8 @@ export function SeeAlsoCardSection(
   }
 
   return (
-    <Card.Section>
-      <Text fw={500}>See Also</Text>
+    <Card.Section withBorder mt="sm">
+      <Text fw={700}>See Also</Text>
       <List listStyleType="disc">
         {seeAlsoWords.map((word, index) => {
           const displayText = japaneseTextFactory(word, displayMode);

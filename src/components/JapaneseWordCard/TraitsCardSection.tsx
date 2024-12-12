@@ -13,7 +13,7 @@ export function TraitsCardSection({
   }
 
   return (
-    <Card.Section>
+    <Card.Section withBorder mt="sm">
       <Group gap="xs">
         {traits.map((trait, index) =>
           <Badge key={index} variant="light" color="blue" size="lg">

@@ -55,19 +55,23 @@ export class JapaneseWordBuilder {
       return;
     }
 
+    console.debug(`Example Data: ${examplesData}`)
     for (const exampleData of examplesData) {
+      console.debug(`Data: ${exampleData}`)
       const exampleSource = exampleData["source_title"];
       const exampleLink = exampleData["link"];
 
       const exampleWord = new JapaneseWordExample(exampleSource, exampleLink);
 
-      const exampleSentence = exampleData["sentence"];
+      const exampleSentence = exampleData["sentence_examples"];
+      console.debug(`Example Sentences: ${exampleSentence}`)
       if (!isIterable(exampleSentence)) {
         // No example sentence...
         continue;
       }
 
-      for (const sentence of exampleData["sentence_examples"]) {
+      for (const sentence of exampleSentence) {
+        console.debug(`Example: ${sentence}`)
         exampleWord.addExample(sentence);
       }
 

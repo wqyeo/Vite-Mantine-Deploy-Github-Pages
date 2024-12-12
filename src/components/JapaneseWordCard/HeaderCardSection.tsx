@@ -18,7 +18,7 @@ export function HeaderCardSection(
 
   if (word.jlptLevel === undefined) {
     return (
-      <Card.Section>
+      <Card.Section withBorder mt="sm">
         {japaneseText}
       </Card.Section>
     )

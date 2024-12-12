@@ -23,7 +23,7 @@ export function ExamplesCardSection(
   }
 
   return (
-    <Card.Section>
+    <Card.Section withBorder mt="sm">
       <Stack
         align="stretch"
         justify="flex-start"

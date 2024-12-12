@@ -21,7 +21,7 @@ export function JapaneseWordCard(
   }: JapaneseWordCardProps
 ) {
   return (
-    <Card withBorder shadow="sm" radius="md">
+    <Card withBorder shadow="sm" radius="md" padding="md">
       <HeaderCardSection word={word} displayMode={displayMode}/>
 
       <AlternativeReadWriteCardSection words={word.alternativeWriteRead} displayMode={displayMode}/>

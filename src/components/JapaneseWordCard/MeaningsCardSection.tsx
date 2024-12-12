@@ -12,8 +12,8 @@ export function MeaningsCardSection({
   }
 
   return (
-    <Card.Section>
-      <Text fw={500}>Meanings</Text>
+    <Card.Section withBorder mt="sm">
+      <Text fw={700}>Meanings</Text>
       <List>
         {meanings.map((meaning, index) =>
           <List.Item key={index}>{meaning}</List.Item>

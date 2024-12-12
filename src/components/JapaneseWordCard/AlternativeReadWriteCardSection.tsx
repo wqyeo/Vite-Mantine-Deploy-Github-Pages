@@ -26,8 +26,8 @@ export function AlternativeReadWriteCardSection(
   }
 
   return (
-    <Card.Section>
-      <Text fw={500}>Alternative Readings/Writings</Text>
+    <Card.Section mt="sm">
+      <Text fw={700}>Alternative Readings/Writings</Text>
       <List>
         {words.map((word, index) =>
           <List.Item key={index}>
