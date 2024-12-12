@@ -49,7 +49,7 @@ function buildWordFromKeyData(key: any, data: any) {
       isIterable(traitMeaningsNoun) &&
       traitMeaningsNoun.length > 0
     ) {
-      const traitsData: string[] = traitMeaningsNoun[0]['noun'];
+      const traitsData: string[] = traitMeaningsNoun[0]['traits'];
       wordBuilder.setTraits(traitsData);
 
       const meaningsData: any[] = traitMeaningsNoun[0]['meanings'];
