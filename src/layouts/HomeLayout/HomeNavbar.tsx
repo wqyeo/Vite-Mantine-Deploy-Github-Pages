@@ -1,4 +1,4 @@
-import {AppShell, Button, ScrollArea, Skeleton, TextInput, UnstyledButton} from '@mantine/core';
+import {AppShell, ScrollArea, Skeleton, TextInput, UnstyledButton} from '@mantine/core';
 import { useState, useRef } from 'react';
 
 interface HomeNavbarProps {
@@ -73,7 +73,7 @@ export function HomeNavbar({
               });
             }
           }}
-          placeholder="Search groceries"
+          placeholder="Search Entries"
         />
       <ScrollArea h="90%" type="always" mt="md" viewportRef={viewportRef} scrollbars="y">
           {items}
