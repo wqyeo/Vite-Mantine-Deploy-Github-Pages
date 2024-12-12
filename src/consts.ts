@@ -1,0 +1,1 @@
+export const JSON_FILE_NAME = "jp-words-sample.json";
