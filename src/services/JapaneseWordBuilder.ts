@@ -1,6 +1,7 @@
 import {JapaneseWordInformation} from "@/models/JapaneseWordInformation";
 import {isArrayOfString} from "@/utils/isArrayOfString";
 import {JapaneseWordExample} from "@/models/JapaneseWordExample";
+import {isIterable} from "@/utils/isIterable";
 
 /* eslint-disable dot-notation */
 
@@ -16,6 +17,11 @@ export class JapaneseWordBuilder {
   }
 
   public setTraits(traits: string[]): void {
+    if (!isIterable(traits)) {
+      console.warn("Invalid traits to build upon, ignoring...");
+      return;
+    }
+
     for (const trait of traits) {
       this._word.addTrait(trait);
     }
@@ -25,6 +31,11 @@ export class JapaneseWordBuilder {
    * @param meaningsData Either an array of string, or an array containing arrays of strings.
    */
   public setMeanings(meaningsData: any[]): void {
+    if (!isIterable(meaningsData)) {
+      console.warn("Invalid meaningsData to build upon, ignoring...");
+      return;
+    }
+
     if (isArrayOfString(meaningsData)) {
       for (const meaning of meaningsData) {
         this._word.addMeaning(meaning);
@@ -39,6 +50,11 @@ export class JapaneseWordBuilder {
   }
 
   public setExamples(examplesData: any[]): void {
+    if (!isIterable(examplesData)) {
+      console.warn("Invalid examplesData to build upon, ignoring...");
+      return;
+    }
+
     for (const exampleData of examplesData) {
       const exampleSource = exampleData["source_title"];
       const exampleLink = exampleData["link"];
@@ -53,6 +69,11 @@ export class JapaneseWordBuilder {
   }
 
   public setAlternatives(alternativeWriteReadData: any[]): void {
+    if (!isIterable(alternativeWriteReadData)) {
+      console.warn("Invalid alternativeWriteReadData to build upon, ignoring...");
+      return;
+    }
+
     for (const altData of alternativeWriteReadData) {
       const altKanji: string = altData["writing"];
       const altHiragana: string = altData["reading"];

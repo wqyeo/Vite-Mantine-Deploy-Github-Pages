@@ -19,7 +19,7 @@ export async function loadJapaneseWords(targetEntry: string) {
     const data = targetEntryData[key];
 
     // If object type is dictionary (likely have traits, alternative write/reads, etc...)
-    if (typeof data === 'object' && data !== null) {
+    if (data !== undefined && typeof data === 'object' && data !== null) {
       const kanji: string = data["reference_writeRead"]["writing"];
       const hiragana: string = data["reference_writeRead"]["reading"];
       const wordBuilder = new JapaneseWordBuilder(kanji, hiragana);
@@ -27,13 +27,13 @@ export async function loadJapaneseWords(targetEntry: string) {
       const jlptLevel: number = data["ksd_jlpt_level"];
       wordBuilder.setJlptLevel(jlptLevel)
 
-      const alternativeWriteReadData: any[] = data["alternative_writeRead"];
+      const alternativeWriteReadData: any[] = data["alt_writeReads"];
       wordBuilder.setAlternatives(alternativeWriteReadData);
 
-      const traitsData: string[] = data["traitMeans-noun"]["noun"];
+      const traitsData: string[] = data["traitMeans-noun"][0]["noun"];
       wordBuilder.setTraits(traitsData);
 
-      const meaningsData: any[] = data["traitMeans-noun"]["meanings"];
+      const meaningsData: any[] = data["traitMeans-noun"][0]["meanings"];
       wordBuilder.setMeanings(meaningsData);
 
       const examplesData: any[] = data["encounter_examples-link"];
@@ -43,10 +43,10 @@ export async function loadJapaneseWords(targetEntry: string) {
       japaneseWords.push(currentWord);
     } else {
       // Likely just a string
-      const extractedData = extractText(data);
+      const extractedData = extractText(key);
 
       if (extractedData == null) {
-        console.warn(`Unexpected data format in (${targetEntry}): ${data}; Ignoring...`);
+        console.warn(`Unexpected data format in (${targetEntry}): ${key}; Ignoring...`);
         continue;
       }
 
