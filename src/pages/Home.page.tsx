@@ -6,7 +6,7 @@ import {loadJapaneseWords} from "@/services/loadJapaneseWords";
 import {HomeNavbar} from "@/layouts/HomeLayout/HomeNavbar";
 import {HomeLayout} from "@/layouts/HomeLayout/HomeLayout";
 import {RubyTextDisplayMode} from "@/enums/RubyTextDisplayMode";
-import {JapaneseWordGrid} from "@/components/JapaneseWordGrid/JapaneseWordGrid";
+import {JapaneseWordStack} from "@/components/JapaneseWordStack";
 
 export function HomePage() {
   const [entries, setEntries] = useState<string[]>([]);
@@ -52,7 +52,7 @@ export function HomePage() {
       navbar={homeNavbar}
       onRubyTextDisplayModeChange={setRubyDisplayMode}
     >
-      <JapaneseWordGrid words={japaneseWords} displayMode={rubyDisplayMode}/>
+      <JapaneseWordStack words={japaneseWords} displayMode={rubyDisplayMode}/>
     </HomeLayout>
   );
 }

@@ -30,7 +30,7 @@ export function HomeNavbar({
           const variant = (section === activeSection) ? "light" : "subtle";
 
           return (
-            <Button key={index} variant={variant} color={color} size="lg" radius="xs" onClick={() => onSectionChange(section)}>
+            <Button mt="sm" key={index} variant={variant} color={color} size="lg" radius="xs" onClick={() => onSectionChange(section)}>
               {section}
             </Button>
           )
