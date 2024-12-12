@@ -2,6 +2,7 @@ import { JSON_FILE_NAME } from "@/consts";
 import { JapaneseWordInformation } from "@/models/JapaneseWordInformation";
 import { loadJapaneseJson } from "@/services/loadJapaneseJson";
 import {JapaneseWordBuilder} from "@/services/JapaneseWordBuilder";
+import {isIterable} from "@/utils/isIterable";
 
 /* eslint-disable dot-notation */
 
@@ -30,11 +31,14 @@ export async function loadJapaneseWords(targetEntry: string) {
       const alternativeWriteReadData: any[] = data["alt_writeReads"];
       wordBuilder.setAlternatives(alternativeWriteReadData);
 
-      const traitsData: string[] = data["traitMeans-noun"][0]["noun"];
-      wordBuilder.setTraits(traitsData);
+      const traitMeaningsNoun: any[] = data["traitMeans-noun"];
+      if (traitMeaningsNoun !== undefined && isIterable(traitMeaningsNoun) && traitMeaningsNoun.length > 0) {
+        const traitsData: string[] = traitMeaningsNoun[0]["noun"];
+        wordBuilder.setTraits(traitsData);
 
-      const meaningsData: any[] = data["traitMeans-noun"][0]["meanings"];
-      wordBuilder.setMeanings(meaningsData);
+        const meaningsData: any[] = traitMeaningsNoun[0]["meanings"];
+        wordBuilder.setMeanings(meaningsData);
+      }
 
       const examplesData: any[] = data["encounter_examples-link"];
       wordBuilder.setExamples(examplesData);
