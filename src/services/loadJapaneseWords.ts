@@ -17,15 +17,8 @@ export async function loadJapaneseWords(targetEntry: string) {
   console.log(`Loading Japanese Words. (${targetEntry})`);
   const targetEntryData: any[] = jsonData[targetEntry];
   const japaneseWords: JapaneseWordInformation[] = [];
-  for (const data in targetEntryData) {
-    console.debug(`Loading ${data}...`);
-
-    try {
-      const actual = targetEntryData[data];
-      console.debug(`Loading ${actual}...`);
-    } catch (error) {
-      console.error(error);
-    }
+  for (const key in targetEntryData) {
+    const data = targetEntryData[key];
 
     try {
       const currentWord = buildWordFromData(data);
@@ -40,7 +33,9 @@ export async function loadJapaneseWords(targetEntry: string) {
 
 function buildWordFromData(data: any) {
   // If object type is dictionary (likely have traits, alternative write/reads, etc...)
-  if (data != null && typeof data === 'object') {
+
+  console.debug(`Building JP-Word from ${data}.`);
+  if (data != null && data.constructor === Object) {
     const kanji: string = data['reference_writeRead']['writing'];
     const hiragana: string = data['reference_writeRead']['reading'];
     const wordBuilder = new JapaneseWordBuilder(kanji, hiragana);
