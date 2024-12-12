@@ -13,10 +13,20 @@ import { isIterable } from '@/utils/isIterable';
 export async function loadJapaneseWords(targetEntry: string) {
   const jsonData = await loadJapaneseJson(JSON_FILE_NAME);
 
+  console.debug(jsonData);
   console.log(`Loading Japanese Words. (${targetEntry})`);
   const targetEntryData: any[] = jsonData[targetEntry];
   const japaneseWords: JapaneseWordInformation[] = [];
   for (const data in targetEntryData) {
+    console.debug(`Loading ${data}...`);
+
+    try {
+      const actual = targetEntryData[data];
+      console.debug(`Loading ${actual}...`);
+    } catch (error) {
+      console.error(error);
+    }
+
     try {
       const currentWord = buildWordFromData(data);
       japaneseWords.push(currentWord);
@@ -30,7 +40,7 @@ export async function loadJapaneseWords(targetEntry: string) {
 
 function buildWordFromData(data: any) {
   // If object type is dictionary (likely have traits, alternative write/reads, etc...)
-  if (data !== undefined && typeof data === 'object' && data !== null) {
+  if (data != null && typeof data === 'object') {
     const kanji: string = data['reference_writeRead']['writing'];
     const hiragana: string = data['reference_writeRead']['reading'];
     const wordBuilder = new JapaneseWordBuilder(kanji, hiragana);
